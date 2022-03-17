@@ -1,0 +1,252 @@
+<scenario>
+  <evenements>
+    <evenement evenementid="Start">
+      <source></source>
+      <valeur></valeur>
+    </evenement>
+    <evenement evenementid="Remote_PageUp">
+      <source>Remote</source>
+      <valeur>458827</valeur>
+    </evenement>
+    <evenement evenementid="Remote_PageDown">
+      <source>Remote</source>
+      <valeur>458830</valeur>
+    </evenement>
+    <evenement evenementid="Remote_Up">
+      <source>Remote</source>
+      <valeur>458834</valeur>
+    </evenement>
+    <evenement evenementid="Remote_Down">
+      <source>Remote</source>
+      <valeur>458833</valeur>
+    </evenement>
+    <evenement evenementid="Remote_Next">
+      <source>Remote</source>
+      <valeur>458831</valeur>
+    </evenement>
+    <evenement evenementid="Remote_Left">
+      <source>Remote</source>
+      <valeur>458832</valeur>
+    </evenement>
+    <evenement evenementid="Remote_Windows">
+      <source>Remote</source>
+      <valeur>458983</valeur>
+    </evenement>
+    <evenement evenementid="Remote_Esc">
+      <source>Remote</source>
+      <valeur>458793</valeur>
+    </evenement>
+    <evenement evenementid="GPIO_DOWN_4">
+      <source>GPIO_DOWN</source>
+      <valeur>4</valeur>
+    </evenement>
+    <evenement evenementid="PAD_balayage_droite">
+      <source>PAD</source>
+      <valeur>west-east</valeur>
+    </evenement>
+    <evenement evenementid="PAD_balayage_gauche">
+      <source>PAD</source>
+      <valeur>east-west</valeur>
+    </evenement>
+    <evenement evenementid="Slider_Timeout">
+      <source>Slider</source>
+      <valeur>1000</valeur>
+    </evenement>
+  </evenements>
+  <actions>
+    <action actionid="Pause">
+      <programme>MediaControl</programme>
+      <commande>Pause</commande>
+    </action>
+    <action actionid="Resume">
+      <programme>MediaControl</programme>
+      <commande>Resume</commande>
+    </action>
+    <action actionid="Stop">
+      <programme>MediaControl</programme>
+      <commande>Stop</commande>
+    </action>
+    <action actionid="HDMIinput">
+      <programme>Subprocess|HDMIinput|\003</programme>
+      <commande>raspivid -t 0</commande>
+    </action>
+    <action actionid="DispmanX">
+      <programme>Subprocess|DispmanX|\033</programme>
+      <commande>/home/pi/Desktop/hello_dispmanx/hello_dispmanx.bin</commande>
+    </action>
+    <action actionid="StopDispmanX">
+      <programme>StopSubprocess</programme>
+      <commande>DispmanX</commande>
+    </action>
+    <action actionid="Superpose_engrenage">
+      <programme>Subprocess|Engrenage|\033</programme>
+      <commande>omxplayer -o hdmi --layer 6 --win 200,200,800,800 --alpha 120 /home/pi/Documents/Wootopia/test.mp4</commande>
+    </action>
+    <action actionid="Superpose_framboise">
+      <programme>Subprocess|framboise|\033</programme>
+      <commande>/home/pi/Documents/raspidmx/pngview/pngview -b 0 -l 8 -t 10000 /usr/share/raspberrypi-artwork/raspberry-pi-logo-small.png</commande>
+    </action>
+    <action actionid="Retire_framboise">
+      <programme>StopSubprocess</programme>
+      <commande>framboise</commande>
+    </action>
+    <action actionid="Superpose_wootopia">
+      <programme>Subprocess|arriere-plan|\033</programme>
+      <commande>/home/pi/Documents/raspidmx/pngview/pngview -b 0x000F -l 5 /home/pi/Documents/Wootopia/wootopia.png</commande>
+    </action>
+    <action actionid="Play_Media1">
+      <programme>PlayMedia</programme>
+      <commande>1</commande>
+    </action>
+    <action actionid="LED21_on">
+      <programme>LED21</programme>
+      <commande>on</commande>
+    </action>
+    <action actionid="LED21_off">
+      <programme>LED21</programme>
+      <commande>off</commande>
+    </action>
+    <action actionid="Slider_Init">
+      <programme>Slider</programme>
+      <commande>SliderInit</commande>
+    </action>
+    <action actionid="Slider_Stop">
+      <programme>Slider</programme>
+      <commande>SliderStop</commande>
+    </action>
+    <action actionid="Slider_On_Off">
+      <programme>Slider</programme>
+      <commande>SliderOnOff</commande>
+    </action>
+    <action actionid="Slider_Right">
+      <programme>Slider</programme>
+      <commande>SliderRight</commande>
+    </action>
+    <action actionid="Slider_Left">
+      <programme>Slider</programme>
+      <commande>SliderLeft</commande>
+    </action>
+    <action actionid="Slider_Up">
+      <programme>Slider</programme>
+      <commande>SliderUp</commande>
+    </action>
+    <action actionid="Slider_Down">
+      <programme>Slider</programme>
+      <commande>SliderDown</commande>
+    </action>    
+    <action actionid="Slider_AfficherMedias">
+      <programme>Slider</programme>
+      <commande>SliderAfficherMedias</commande>
+    </action>
+    <action actionid="Slider_AfficherCategories">
+      <programme>Slider</programme>
+      <commande>SliderAfficherCategories</commande>
+    </action>
+    <action actionid="Slider_AfficherSousCategories">
+      <programme>Slider</programme>
+      <commande>SliderAfficherSousCategories</commande>
+    </action>
+    <action actionid="Slider_Dump">
+      <programme>Slider</programme>
+      <commande>SliderDump</commande>
+    </action>
+  </actions>
+  <associations>
+    <association>
+      <evenement>Start</evenement>
+      <action>Play_Media1</action>
+    </association>
+    <association>
+      <evenement>Remote_Esc</evenement>
+      <action>Slider_Stop</action>
+    </association>
+    <association>
+      <evenement>Remote_Windows</evenement>
+      <action>Slider_Dump</action>
+    </association>
+    <association>
+      <evenement>Remote_Left</evenement>
+      <action>Slider_Left</action>
+    </association>
+        <association>
+    <evenement>Remote_Next</evenement>
+      <action>Slider_Right</action>
+    </association>
+    <association>
+      <evenement>Remote_Up</evenement>
+      <action>Slider_Up</action>
+    </association>
+    <association>
+      <evenement>Remote_Down</evenement>
+      <action>Slider_Down</action>
+    </association>
+    <association>
+      <evenement>Remote_PageUp</evenement>
+      <action>Pause</action>
+    </association>
+    <association>
+      <evenement>PAD_balayage_droite</evenement>
+      <action>Superpose_framboise</action>
+    </association>
+    <association>
+      <evenement>PAD_balayage_gauche</evenement>
+      <action>Retire_framboise</action>
+    </association>
+    <association>
+      <evenement>Remote_PageDown</evenement>
+      <action>Resume</action>
+    </association>
+    <association>
+      <evenement>Remote_Next</evenement>
+      <action>Stop</action>
+    </association>
+    <association>
+      <evenement>Remote_Left</evenement>
+      <action>StopDispmanX</action>
+    </association>
+    <association>
+      <evenement>Remote_Down</evenement>
+      <action>DispmanX</action>
+    </association>
+    <association>
+      <evenement>GPIO_DOWN_4</evenement>
+      <action>Resume</action>
+    </association>
+  </associations>
+  <medias>
+    <media mediaid="1">
+      <filename>test.mp4</filename>
+      <positionecran>10,10,500,500</positionecran>
+      <mediasuivant>2</mediasuivant>
+      <associations>
+          <association>
+            <evenement>Remote_Up</evenement>
+            <action>LED21_on</action>
+          </association>
+      </associations>
+      <timeline>
+      </timeline>
+    </media>
+    <media mediaid="2">
+      <filename>lettres.mp4</filename>
+      <positionecran></positionecran>
+      <mediasuivant></mediasuivant>
+      <associations>
+      </associations>
+      <timeline>
+          <event>
+              <seconds10>10</seconds10>
+              <action>LED21_on</action>
+          </event>
+          <event>
+              <seconds10>10</seconds10>
+              <action>Pause</action>
+          </event>
+          <event>
+              <seconds10>20</seconds10>
+              <action>LED21_off</action>
+          </event>
+      </timeline>
+    </media>
+  </medias>
+</scenario>
