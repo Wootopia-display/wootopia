@@ -1,1 +1,49 @@
+The Wootopia's project : installation sur carte micro SD 8Go minimum
 
+Installation OS
+buster 28-01-2022 armhf testée OK
+Attention : L'OS ballseyes n'est pas supportée
+
+activation (raspi-config) :
+- CAMERA
+- SSH
+- SPI
+- I2C
+
+- splash screen disabled
+- GPU 128mo
+- localisation wifi à configurer correctement (France)
+
+# Mise a jour des paquets 
+> sudo apt-get update && sudo apt-get upgrade
+
+# Gestion des fenêtres
+> sudo apt install xdotool 
+
+# Désactivation de l'écran de veille
+> sudo apt install xscreensaver # (confirmer O/n par Entrée si besoin)
+
+# Activer le firewall pour bloquer les connexions entrantes
+> sudo apt install ufw > sudo ufw enable
+
+# laisser l'acces au serveur http de wootopia
+> sudo ufw allow 8080
+
+# Installation de OMXplayer-wrapper : bibliothèque python3 pour le pilotage du video player 
+> sudo apt install libdbus-1-3 libdbus-1-dev libdbus-glib-1-dev > pip3 install omxplayer-wrapper : résoud le probllème "import omx player error"
+
+# Installation de evdev : bibliothèque python3 pour intercepter les événements de la télécommande infrarouge
+> pip3 install evdev
+
+# Installation raspidmx (pour superposer des images) https://github.com/AndrewFromMelbourne/raspidmx
+> sudo apt install libpng12-dev
+#souhaitez vous continuer ? : O/n
+> cd /home/pi/Documents
+> git clone https://github.com/AndrewFromMelbourne/raspidmx
+> cd raspidmx
+> make
+> sudo cp lib/libraspidmx.a /usr/lib/
+
+# Installation PI3D https://pi3d.github.io/html/ReadMe.html#setup-on-the-raspberry-pi
+> sudo pip3 install pi3d
+# copiez le dossier "pi3d_demos" dans le répertoire 'Documents'
