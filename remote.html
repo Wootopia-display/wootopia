@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>The Wootopia's Project</title>
+  <style>
+    body {
+      background-color:#1c1c1c;
+    }
+    svg {
+      position: absolute;
+      top: 3vh;
+      left: 3vw;
+      width: 20vw;
+      min-width: 100px;
+      max-width:280px;
+    }
+    button {
+      outline: none;
+    }
+    .container {
+      margin: 1vw 2vw 3vh 10vw;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 3vw 5vw;
+      padding: 2vw;
+    }
+    .action {
+      font-family: Helvetica, Sans-serif;
+      letter-spacing: 0.1rem;
+      line-height: 1.5;
+      font-size: 1.7vw;
+      font-weight: 100;
+      width: 15vw;
+      height: 10vw;
+      border-radius: 1.5vw;
+      border: none;
+      background-color: #28292a;
+      color: #ffffff;
+      box-shadow: 1vw 1vw 1vw #000;
+    }
+    .action:focus {
+      border: 2px solid red;
+    }
+    .action_active {
+      border: 2px solid red;
+    }
+    
+    .tab {
+      position: absolute;
+      top : 5vh;
+      right : 10vw;
+      overflow: hidden;
+      background-color: #28292a;
+      color: #fff;
+      box-shadow: 1vw 1vw 1vw #000;
+    }
+    .tab button {
+      background-color: inherit;
+      color: #fff;
+      float: left;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 1.7vw;
+      border-top:4px solid #28292a;
+      border-left:#28292a;
+      border-right:#28292a;
+      border-bottom:1px solid red;
+    }
+    .tab button.active {
+      border-top:4px solid red;
+      border-left:1px solid red;
+      border-right:1px solid red;
+      border-bottom:1px solid #28292a;
+    }
+    .tabcontent {
+      margin-top: 16vh;
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="tab">
+    <button class="tablinks active" onclick="openPage(this,'Page1')">Page 1</button>
+    <button class="tablinks" onclick="openPage(this,'Page2')">Page 2</button>
+    <button class="tablinks" onclick="openPage(this,'Page3')">Page 3</button>
+  </div>
+
+  <div id="Page1" class="tabcontent" style="display:block">
+    <div class="container">
+        <button class="action" value="V1">Video 1<br />Scene 1</button>
+        <button class="action" value="V2">Video 2<br />Scene 2</button>
+        <button class="action" value="V3">Video 3<br />Scene 3</button>
+        <button class="action" value=""><br /></button>
+
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+    </div>
+  </div>
+
+  <div id="Page2" class="tabcontent">
+     <div class="container">
+        <button class="action" value="shutdown">Wootopia<br />Shutdown</button>
+        <button class="action" value="reboot">Wootopia<br />Reboot</button>
+        <button class="action" value="stop">Stop<br /></button>
+        <button class="action" value="">Libre<br /></button>
+
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+
+        <button class="action" value="">Libre</button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+    </div>
+  </div>
+
+  <div id="Page3" class="tabcontent">
+    <div class="container">
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+
+        <button class="action" value="">Libre</button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+
+        <button class="action" value="">Libre</button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+        <button class="action" value="">Libre<br /></button>
+    </div>
+  </div>
+
+  <script>
+    function openPage(elmnt, PageName) {
+      [].forEach.call(document.querySelectorAll('.tabcontent'), function(el) { el.style.display = "none"; }); 
+      [].forEach.call(document.querySelectorAll('.tablinks'), function(el) { el.classList.remove("active"); }); 
+      document.getElementById(PageName).style.display="block";
+      elmnt.classList.add("active");
+    }
+    [].forEach.call(document.querySelectorAll('.action'), function(el) {
+      el.addEventListener('click', function() {
+        [].forEach.call(document.querySelectorAll('.action'), function(elt) { elt.classList.remove("action_active"); }); 
+        el.classList.add("action_active");
+        fetch(el.value).then(function(response) {
+          return response.text();
+        }).then(function(result) {
+          console.log(result);
+        });
+      })
+    })
+  </script>
+</body>
+</html>
