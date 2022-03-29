@@ -1,4 +1,4 @@
-# The Wootopia's project : Interactive showcase controller
+# Wootopia Display : Interactive showcase controller
 The wootopia's project has been created to allow easy video and light show automation. Just let your imagination create s your best show, and much more..
 This project as been created for the Raspberry PI4, all previous Raspberry model has not been tested, you can do it at your own risk.
 Installation :
