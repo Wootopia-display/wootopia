@@ -9,3 +9,4 @@ All files should be copied in the 'Document' directory :
 - slider : this directory is used to copy all media and the slider.ini files used with the PI3D slider (beta release for test only)
 - pi3d_demos : this directory is prided by installing the PI3D program. Install PI3D and put this directory in 'Documents'.
 - Many dependences should be installed for a successfull laught of the Wootopia's project .py file. (Please readthe installation file notes for more information)
+- medias directory include necessary media files for demo.
