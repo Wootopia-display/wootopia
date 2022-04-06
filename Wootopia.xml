@@ -217,6 +217,7 @@
     <media mediaid="1">
       <filename>test.mp4</filename>
       <positionecran>10,10,500,500</positionecran>
+      <arguments></arguments>
       <mediasuivant>2</mediasuivant>
       <associations>
           <association>
@@ -230,22 +231,11 @@
     <media mediaid="2">
       <filename>lettres.mp4</filename>
       <positionecran></positionecran>
+      <arguments></arguments>
       <mediasuivant></mediasuivant>
       <associations>
       </associations>
       <timeline>
-          <event>
-              <seconds10>10</seconds10>
-              <action>LED21_on</action>
-          </event>
-          <event>
-              <seconds10>10</seconds10>
-              <action>Pause</action>
-          </event>
-          <event>
-              <seconds10>20</seconds10>
-              <action>LED21_off</action>
-          </event>
       </timeline>
     </media>
   </medias>
